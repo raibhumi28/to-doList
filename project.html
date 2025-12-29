@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <input type="text"class="paragraph" id="para" placeholder="Add to text" > </input>
+    <button class="paragraph" id="button" onclick="addtodo()">Add to-do</button>
+   <div id="addtodo">
+     <ul  type= "checkbox" class="list" id="todoList">
+      <input type="checkbox">  <li >daily 1hr gym</li>
+      <input type="checkbox" >  <li>eat 3 healthy fruits</li>
+      <input type="checkbox">  <li>complete js course</li>
+       <input type="checkbox"> <li>solve dsa problem</li>
+    </ul>
+    </div>
+</body>
+<script>
+    
+   function addtodo(){
+    const input = document.getElementById("para").value;
+    let todoList=document.getElementById("todoList");
+    let newtodo=document.createElement('li');
+    newtodo.appendChild(document.createTextNode(input));
+
+    todoList.prepend(newtodo);
+    // todoList.insertBefore(newtodo,todoList.firstChild);
+      console.log(input);
+     document.getElementById('para').value="";
+     
+
+      
+    }
+ 
+
+ 
+
+
+</script>
+</html>
