@@ -1,0 +1,18 @@
+#para{
+    color: grey;
+    border: 2px solid black;
+    width : 400px;
+    height: 10px;
+    padding: 10px;
+}
+.paragraph {
+    display: inline-flex;
+}
+#button{
+    background-color: green;
+    color: white;
+}
+.list{
+    list-style-type: circle ;
+
+}
