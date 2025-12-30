@@ -11,30 +11,73 @@
     <input type="text"class="paragraph" id="para" placeholder="Add to text" > </input>
     <button class="paragraph" id="button" onclick="addtodo()">Add to-do</button>
    <div id="addtodo">
-     <ul  type= "checkbox" class="list" id="todoList">
-      <input type="checkbox">  <li >daily 1hr gym</li>
-      <input type="checkbox" >  <li>eat 3 healthy fruits</li>
-      <input type="checkbox">  <li>complete js course</li>
-       <input type="checkbox"> <li>solve dsa problem</li>
+     <ul  class="list" id="todoList">
     </ul>
     </div>
 </body>
 <script>
-    
+    //  const input = document.getElementById("para");
+    //   const button = document.getElementById("button");
+    //  button.addEventListener("click", () => {
+    //   const value = input.value;
+    //     localStorage.setItem("name" ,value);
+    //  })
+    document.addEventListener('DOMContentLoaded',(event) => {
+    console.log('DOM fully loaded and parsed'); 
+    if ('DOM fully loaded and parsed' ) {
+    //    const todo=  localStorage.getItem("todo")
+    //     let todoList=document.getElementById("todoList");
+    // let newtodo=document.createElement('li');
+    //  newtodo.appendChild(document.createTextNode(todo))
+    //  todoList.appendChild(newtodo);
+    let allTodos=localStorage.getItem('allTodos');
+    if(allTodos!=null){
+        allTodos=JSON.parse(allTodos);
+         let todoList=document.getElementById("todoList");
+         allTodos.reverse();
+        for(let todo of allTodos){
+            let newtodo=document.createElement('li');
+    //   newtodo.appendChild(document.createTextNode(todo))
+      newtodo.innerHTML= `<input type = "checkbox"> ${todo}`;
+       todoList.appendChild(newtodo);
+        }
+    }
+
+    }
+    });
    function addtodo(){
     const input = document.getElementById("para").value;
     let todoList=document.getElementById("todoList");
     let newtodo=document.createElement('li');
-    newtodo.appendChild(document.createTextNode(input));
-
+    // newtodo.appendChild(document.createTextNode(input));
+        newtodo.innerHTML= `<input type = "checkbox"> ${input}`;
     todoList.prepend(newtodo);
     // todoList.insertBefore(newtodo,todoList.firstChild);
-      console.log(input);
-     document.getElementById('para').value="";
+      console.log(input); 
+      document.getElementById('para').value="";
+    //  const todo = localStorage.getItem("todo ")
      
-
-      
+    //  if (todo === null || todo === "") {
+    //        localStorage.setItem("todo",input);
+    //  } 
+    //  else {
+    //     todo = `${todo}+${input}`
+    //     localStorage.setItem("todo",todo);
+    //  }
+    let allTodos=localStorage.getItem('allTodos');
+    if(allTodos==null){
+        allTodos=[];
     }
+    else{
+        allTodos=JSON.parse(allTodos);
+    }
+    allTodos.push(input);
+    localStorage.setItem('allTodos',JSON.stringify(allTodos));
+     
+    
+}
+
+
  
 
  
